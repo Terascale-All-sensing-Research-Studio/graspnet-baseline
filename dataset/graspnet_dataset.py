@@ -9,7 +9,11 @@ import scipy.io as scio
 from PIL import Image
 
 import torch
-from torch._six import container_abcs
+from packaging import version
+if version.parse(torch.__version__) < version.parse("1.9"):
+    from torch._six import container_abcs
+else:
+    import collections.abc as container_abcs
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
