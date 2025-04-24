@@ -1,6 +1,6 @@
 # GraspNet Baseline - TARS Customized
 
-The TARS customized model for "GraspNet-1Billion: A Large-Scale Benchmark for General Object Grasping" (CVPR 2020).
+The TARS customized baseline model for "GraspNet-1Billion: A Large-Scale Benchmark for General Object Grasping" (CVPR 2020).
 
 This version has been tested on an Ubuntu 20.04 machine with NVIDIA GeForce RTX 3090 with CUDA 12.
 
