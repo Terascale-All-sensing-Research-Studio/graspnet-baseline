@@ -2,6 +2,8 @@
 
 The TARS customized model for "GraspNet-1Billion: A Large-Scale Benchmark for General Object Grasping" (CVPR 2020).
 
+This version has been tested on an Ubuntu 20.04 machine with NVIDIA GeForce RTX 3090 with CUDA 12.
+
 [[paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fang_GraspNet-1Billion_A_Large-Scale_Benchmark_for_General_Object_Grasping_CVPR_2020_paper.pdf)]
 [[dataset](https://graspnet.net/)]
 [[API](https://github.com/graspnet/graspnetAPI)]
@@ -17,20 +19,40 @@ The TARS customized model for "GraspNet-1Billion: A Large-Scale Benchmark for Ge
 ![teaser](doc/teaser.png)
 
 ## Requirements
-- Python 3
-- PyTorch 1.6
-- Open3d >=0.8
-- TensorBoard 2.3
+- Python 3.8
+- PyTorch
+- TensorBoard
 - NumPy
 - SciPy
+- Open3d
 - Pillow
 - tqdm
+- ninja
+- timm
 
 ## Installation
 Get the code.
 ```bash
-git clone https://github.com/graspnet/graspnet-baseline.git
+git clone https://github.com/Terascale-All-sensing-Research-Studio/graspnet-baseline.git
 cd graspnet-baseline
+```
+Greate and activate a virtual environment using virtualenv:
+```bash
+virtualenv -p python3.8 .venv
+source .venv/bin/activate
+```
+Or using conda:
+```bash
+conda create -n graspnet python=3.8 -y
+conda activate graspnet
+```
+Set CUDA_HOME.
+```bash
+export CUDA_HOME=/usr/local/cuda-12
+```
+Install PyTorch.
+```bash
+pip install torch torchvision torchaudio
 ```
 Install packages via Pip.
 ```bash
@@ -39,16 +61,15 @@ pip install -r requirements.txt
 Compile and install pointnet2 operators (code adapted from [votenet](https://github.com/facebookresearch/votenet)).
 ```bash
 cd pointnet2
-python setup.py install
+TORCH_CUDA_ARCH_LIST="8.0" pip install .
 ```
 Compile and install knn operator (code adapted from [pytorch_knn_cuda](https://github.com/chrischoy/pytorch_knn_cuda)).
 ```bash
 cd knn
-python setup.py install
+TORCH_CUDA_ARCH_LIST="8.0" pip install .
 ```
 Install graspnetAPI for evaluation.
 ```bash
-git clone https://github.com/graspnet/graspnetAPI.git
 cd graspnetAPI
 pip install .
 ```
